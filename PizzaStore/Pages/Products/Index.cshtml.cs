@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PizzaStore.Data;
 using PizzaStore.Models;
 
-namespace PizzaStore.Pages.Accounts
+namespace PizzaStore.Pages.Products
 {
     public class IndexModel : PageModel
     {
@@ -18,21 +18,11 @@ namespace PizzaStore.Pages.Accounts
         {
             _context = context;
         }
-
-        public IList<Account> Account { get;set; } = default!;
+        public IList<Models.Products> Products { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Account = await _context.Accounts
-             .Select(a => new Account
-             {
-                 AccountID = a.AccountID,
-                 UserName = a.UserName,
-                 FullName = a.FullName,
-                 Password = null,
-                 Type = a.Type                             
-             })
-             .ToListAsync();
+            Products = await _context.Products.ToListAsync();
         }
     }
 }

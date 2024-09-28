@@ -7,7 +7,7 @@ namespace PizzaStore
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<PizzaContext>(opt =>
-        opt.UseSqlServer(builder.Configuration.GetConnectionString("PizzaStore")));
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("PizzaStore")));
             // Add services to the container.
             builder.Services.AddRazorPages();
 
@@ -30,7 +30,7 @@ namespace PizzaStore
             app.MapRazorPages();
             app.MapGet("/", async context =>
             {
-                context.Response.Redirect("/Accounts/Index");
+                context.Response.Redirect("/Accounts/Login");
             });
             app.Run();
         }
